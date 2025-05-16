@@ -1,20 +1,9 @@
 # Databricks notebook source
-#%pip install delta-hybrid-scd
+%pip install delta-hybrid-scd
 
 # COMMAND ----------
 
-#%restart_python
-
-# COMMAND ----------
-
-import sys
-sys.path.append('/Workspace/Users/prateek.mishra@thoughtworks.com/scd_poetry')
-
-# COMMAND ----------
-
-import importlib
-import delta_hybrid_scd.scd_handler as scd_handler
-importlib.reload(scd_handler)
+%restart_python
 
 # COMMAND ----------
 
@@ -33,8 +22,8 @@ logger.setLevel(logging.DEBUG)
 
 # COMMAND ----------
 
-catalog_name = "hive_metastore"
-schema_name = "test_scd_lib"
+catalog_name = "development"
+schema_name = "test_schema"
 
 spark.conf.set("SCD.CATALOG", catalog_name)
 spark.conf.set("SCD.SCHEMA", schema_name)

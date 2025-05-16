@@ -1,4 +1,3 @@
-%md
 # Hybrid SCD1 and SCD2 Implementation
 
 This package enables the implementation of a hybrid Slowly Changing Dimension (SCD) Type 1 and Type 2 based on changes in column values.
@@ -15,6 +14,18 @@ This package enables the implementation of a hybrid Slowly Changing Dimension (S
   - `scd_key`: Hash key column created on columns on which SCD Type 2 changes are tracked.
   - `upd_key`: Hash key column on which SCD Type 1 changes are tracked.
 
+## Setup
+
+To set up the project, follow these steps:
+
+```sh
+pip install delta-hybrid-scd
+```
+
+```python
+from delta_hybrid_scd import scd_handler
+```
+
 ## Implementation Use Case
 
 Scenario available in test/test_scd_handler:
@@ -26,7 +37,7 @@ We have source data with the following columns:
 Upon the initial run, we get the following:
 Here, `effective_from` is created using `reg_ts` (passed from the `initial_eff_date_col` parameter).
 
-<img src="img/day1_run.png" alt="Day 1 Run" width="900"/>
+<img src="img/first_run.png" alt="Day 1 Run" width="900"/>
 
 On the incremental run, we update values for BTC and Google. As this is an incremental run,
 `effective_from` is now taken from `last_modify_ts` (passed from the `effective_from_col` parameter).
